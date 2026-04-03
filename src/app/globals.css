@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+
+/* ========================================
+   SITE GLOBAL STYLES (Admin hariç)
+   ======================================== */
+
+:root {
+  --primary: #1565C0;
+  --primary-dark: #0D47A1;
+  --primary-light: #42A5F5;
+  --accent: #FFD600;
+  --accent-dark: #FFC107;
+  --accent-light: #FFF9C4;
+  --text-dark: #1a1a2e;
+  --text-body: #374151;
+  --text-light: #6B7280;
+  --bg-light: #F8FAFC;
+  --white: #FFFFFF;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--text-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+}
+
+/* Site link hover */
+.site-wrapper a {
+  transition: color 0.2s ease;
+}
+
+/* Slider mobile height */
+.slider-container {
+  height: 500px;
+}
+
+@media (max-width: 768px) {
+  .slider-container {
+    height: 280px;
+  }
+}
+
+/* Tab active styling */
+.tab-active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.tab-inactive {
+  background: white;
+  color: var(--primary);
+  border: 2px solid #e5e7eb;
+}
+
+.tab-inactive:hover {
+  border-color: var(--primary);
+  background: var(--accent-light);
+}
+
+/* Sticky buttons */
+.sticky-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+}
+
+@media (min-width: 769px) {
+  .sticky-buttons {
+    bottom: 20px;
+    left: auto;
+    right: 20px;
+    flex-direction: column;
+    width: auto;
+    gap: 10px;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Content HTML styling */
+.content-html p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.content-html h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.content-html h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.content-html ul, .content-html ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.content-html li {
+  margin-bottom: 0.5rem;
+}
+
+.content-html strong {
+  font-weight: 700;
+}
