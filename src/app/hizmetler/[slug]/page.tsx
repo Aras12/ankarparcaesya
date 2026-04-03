@@ -25,6 +25,8 @@ export default async function ServiceDetailPage({ params }: { params: { slug: st
   const { data: service } = await supabase.from('services').select('*').eq('slug', params.slug).single()
   if (!service) notFound()
 
+  const { data: gallery } = await supabase.from('service_gallery').select('*').eq('service_id', service.id).order('sort_order')
+
   return (
     <SiteLayout>
       <div className="relative h-56 md:h-72 bg-primary-900">
@@ -38,6 +40,18 @@ export default async function ServiceDetailPage({ params }: { params: { slug: st
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <div className="content-html" dangerouslySetInnerHTML={{ __html: service.content || '<p>İçerik yakında eklenecektir.</p>' }} />
+            {gallery && gallery.length > 0 && (
+              <div className="mt-8">
+                <h2 className="font-heading font-bold text-xl text-primary-700 mb-4">{service.name} Galeri</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {gallery.map(img => (
+                    <div key={img.id} className="relative h-40 rounded-lg overflow-hidden">
+                      <Image src={getImageUrl(img.image_url)} alt={img.alt_text || service.name} fill className="object-cover hover:scale-110 transition-transform duration-500" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             <div className="mt-10 bg-accent-50 border border-accent-200 rounded-xl p-6 text-center">
               <h2 className="font-heading font-bold text-xl text-primary-700 mb-3">Hemen Teklif Alın</h2>
               <a href="/teklif" className="inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold px-6 py-3 rounded-lg transition-all">Teklif Al</a>
