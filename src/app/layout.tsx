@@ -13,6 +13,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {settings.google_verification && <meta name="google-site-verification" content={settings.google_verification} />}
         {settings.yandex_verification && <meta name="yandex-verification" content={settings.yandex_verification} />}
         {settings.bing_verification && <meta name="msvalidate.01" content={settings.bing_verification} />}
+    <meta name="yandex-verification" content="6e24b76a46e213a6" />
       </head>
       <body>{children}</body>
     </html>
