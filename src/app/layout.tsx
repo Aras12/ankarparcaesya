@@ -1,7 +1,22 @@
 import './globals.css'
+import { Poppins, Open_Sans } from 'next/font/google'
 import { getSiteSettings } from '@/lib/settings'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-heading',
+  display: 'swap',
+})
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-body',
+  display: 'swap',
+})
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const settings = await getSiteSettings()
@@ -15,7 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {settings.bing_verification && <meta name="msvalidate.01" content={settings.bing_verification} />}
     <meta name="yandex-verification" content="6e24b76a46e213a6" />
       </head>
-      <body>{children}</body>
+      <body className={`${poppins.variable} ${openSans.variable}`}>{children}</body>
     </html>
   )
 }

@@ -4,7 +4,7 @@ import { getPageSeo } from '@/lib/settings'
 import SiteLayout from '@/components/layout/SiteLayout'
 import RegionsGrid from '@/components/home/RegionsGrid'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getPageSeo('bolgeler')
