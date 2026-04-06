@@ -13,7 +13,7 @@ import TestimonialsSection from '@/components/home/TestimonialsSection'
 import BlogSection from '@/components/home/BlogSection'
 import FaqSection from '@/components/home/FaqSection'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 export async function generateMetadata(): Promise<Metadata> {
   const [seo, settings] = await Promise.all([getPageSeo('homepage'), getSiteSettings()])
